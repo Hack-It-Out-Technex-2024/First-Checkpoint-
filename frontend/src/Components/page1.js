@@ -4,29 +4,38 @@ import noteContext from "../Context/noteContext";
 import { useNavigate } from "react-router-dom";
 
 const Page1 = () => {
-  const context = useContext(noteContext);
-  // let history = useNavigate();
-  const { Data, setData, addData, getData } = context;
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      // getData();
-    } else {
-      history("/login");
-    }
-  }, []);
-
-  const [Plastic, setPlatic] = useState(0);
-  const [Rubber, setRubber] = useState(0);
-  const [Glass, setGlass] = useState(0);
-  const [Ewaste, setEwaste] = useState(0);
-  const [Paper, setPaper] = useState(0);
-  const [Mettalic, setMettalic] = useState(0);
-
-  const handleclick = (e) => {
-    e.preventDefault();
-    addData(Plastic, Glass, 1);
+  const host = "http://localhost:5000";
+  let history =useNavigate();
+  
+  const addData = async (plastic, glass,Ewaste,paper,mettalic, days) => {
+    //TODO API CALL
+    const response = await fetch(`${host}/api/data/adddata`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({ plastic, glass,Ewaste,paper,mettalic, days}),
+    });
+    //logic to edit in client site
+    const note = await response.json();
   };
 
+  const [Plastic, setPlatic] = useState("Amount in grams");
+  const [Glass, setGlass] = useState("Amount in grams");
+  const [Ewaste, setEwaste] = useState("Amount in grams");
+  const [Paper, setPaper] = useState("Amount in grams");
+  const [Mettalic, setMettalic] = useState("Amount in grams");
+
+  const handleclick = (e) => {
+    addData(Plastic, Glass,Ewaste,Paper,Mettalic, 1);
+    setEwaste("Amount in grams")
+    setGlass("Amount in grams")
+    setMettalic("Amount in grams")
+    setPaper("Amount in grams")
+    setPlatic("Amount in grams")
+  };
+  
   const [mystyle, setMystyle] = useState({});
   return (
     <div className="main">
@@ -36,11 +45,14 @@ const Page1 = () => {
             <img src="Images/logo.png" alt="logo" />
           </div>
           <div className="options">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/main">
               <button>Home</button>
             </Link>
             <Link className="nav-link" to="/about">
               <button>About</button>
+            </Link>
+            <Link className="nav-link" to="/info">
+              <button>Resources</button>
             </Link>
             <Link className="nav-link" to="/">
               <button>Logout</button>
@@ -99,7 +111,7 @@ const Page1 = () => {
                 type="number"
                 value={Mettalic}
                 onChange={(e) => {
-                  setPlatic(e.target.value);
+                  setMettalic(e.target.value);
                 }}
                 name="counter"
                 id="counter"
@@ -114,7 +126,7 @@ const Page1 = () => {
                 type="number"
                 value={Glass}
                 onChange={(e) => {
-                  setPlatic(e.target.value);
+                  setGlass(e.target.value);
                 }}
                 name="counter"
                 id="counter"
@@ -129,7 +141,7 @@ const Page1 = () => {
                 type="number"
                 value={Paper}
                 onChange={(e) => {
-                  setPlatic(e.target.value);
+                  setPaper(e.target.value);
                 }}
                 name="counter"
                 id="counter"
@@ -144,7 +156,7 @@ const Page1 = () => {
                 type="number"
                 value={Ewaste}
                 onChange={(e) => {
-                  setPlatic(e.target.value);
+                  setEwaste(e.target.value);
                 }}
                 name="counter"
                 id="counter"
@@ -161,7 +173,7 @@ const Page1 = () => {
                   "typing 5s steps(40, end), blink-caret 0.75s step-end infinite",
                 height: "400px",
               });
-              handleclick;
+              handleclick();
             }}
           >
             See Impact

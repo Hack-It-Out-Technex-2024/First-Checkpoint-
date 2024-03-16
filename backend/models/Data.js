@@ -9,7 +9,19 @@ const DataSchema = new Schema({
     type: Number,
     required: true,
   },
-  rubber: {
+  paper: {
+    type: Number,
+    required: true,
+  },
+  mettalic: {
+    type: Number,
+    required: true,
+  },
+  glass: {
+    type: Number,
+    required: true,
+  },
+  Ewaste: {
     type: Number,
     required: true,
   },

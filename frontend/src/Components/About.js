@@ -5,24 +5,27 @@ const about = () => {
   return (
     <div className="page">
       <div className="top">
-        <div className="Navbar">
-          <nav>
-            <div className="img">
-              <img src="Images/logo.png" alt="logo" />
-            </div>
-            <div className="options">
-              <Link className="nav-link" to="/">
-                <button>Home</button>
-              </Link>
-              <Link className="nav-link" to="/about">
-                <button>About</button>
-              </Link>
-              <Link className="nav-link" to="/">
+      <div className="Navbar">
+        <nav>
+          <div className="img">
+            <img src="Images/logo.png" alt="logo" />
+          </div>
+          <div className="options">
+            <Link className="nav-link" to="/main">
+              <button>Home</button>
+            </Link>
+            <Link className="nav-link" to="/about">
+              <button>About</button>
+            </Link>
+            <Link className="nav-link" to="/info">
+              <button>Resources</button>
+            </Link>
+            <Link className="nav-link" to="/">
               <button>Logout</button>
             </Link>
-            </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
+      </div>
         <div className="content">
           <div className="image">
             <img src="Images/About1.png" alt="about" />
