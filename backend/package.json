@@ -1,6 +1,7 @@
 {
   "name": "waste-management-backend",
   "version": "1.0.0",
+  "start": "node app.js",
   "description": "backend of WM app",
   "main": "index.js",
   "scripts": {
