@@ -12,6 +12,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+      history("/main");
     fetch("http://localhost:5000/api/auth/login");
     const response = await fetch(`http://localhost:5000/api/auth/login`, {
       method: "POST",
@@ -28,7 +29,6 @@ const Login = () => {
     if (json.success) {
       //redirect
       localStorage.setItem("token", json.auhToken);
-      history("/main");
     } else {
       setMsg("Please login Using Correct details");
     }
