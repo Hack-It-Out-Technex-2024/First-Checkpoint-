@@ -13,7 +13,7 @@ const DataSchema = new Schema({
     type: Number,
     required: true,
   },
-  Days: {
+  days: {
     type: Number,
     required: true,
   },
