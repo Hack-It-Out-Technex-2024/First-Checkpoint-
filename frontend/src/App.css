@@ -129,7 +129,7 @@ nav .options button:hover {
   align-items: center;
   /* background-color: #168aad; */
   gap: 0.4rem;
-  height: 400px;
+  /* height: 400px; */
   width: 250px;
   box-shadow: 1px 3px 5px 0px #989292;
   border-radius: 10px;
@@ -139,28 +139,13 @@ nav .options button:hover {
   width: 90px;
   height: 90px;
 }
-.section2 .box2 .cont .card .counter {
-  display: flex;
-  justify-content: space-between;
+.section2 .box2 .cont .card input {
+  /* font-size: 20px; */
+  width: 180px;
+  height: 30px;
+  /* font-weight: bolder; */
   border: 2px solid black;
   border-radius: 8px;
-  width: 50%;
-  height: 25px;
-}
-.section2 .box2 .cont .card .counter button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  font-weight: bolder;
-  background-color: #99d98c;
-  border: none;
-  border-radius: 8px;
-  width: 40px;
-  cursor: pointer;
-}
-.section2 .box2 .cont .card .counter button:hover {
-  font-size: 25px;
 }
 .section2 .box2 #submit-btn {
   background-color: #1e7c81;
@@ -174,11 +159,11 @@ nav .options button:hover {
   align-self: flex-end;
 }
 .section2 .box2 .impact-txt {
+  height: 0px;
   color: black;
   width: 90%;
   opacity: 0;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  /* border-right: 0.15em solid black; The typwriter cursor */
   white-space: pre-line; /* Keeps the content on a single line */
 }
 @keyframes typing {
@@ -197,6 +182,18 @@ nav .options button:hover {
   50% {
     border-color: black;
   }
+}
+.section2 .feedback{
+  margin: 20px;
+  max-width: 95%;
+  min-height: 100px;
+  margin-bottom: 20px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding: 5px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 /* section 3 */
 
@@ -383,6 +380,10 @@ css
   filter: blur(8px);
   -webkit-filter: blur(8px);
   z-index: -1;
+}
+/* left portion */
+
+.login .page .card_left {
 }
 
 .Login .page .card {
@@ -578,12 +579,10 @@ css
     rgb(31, 123, 31)
   );
   border-radius: 3vh;
-  /* border: 1px solid black; */
+  cursor: pointer;
 }
 
 .card_2 .else {
-  /* border: 1px solid black; */
-  /* padding: auto; */
   justify-content: center;
   width: 100%;
   display: flex;
@@ -652,7 +651,7 @@ css
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: rgba(1, 106, 112, 1) ;
+  color: rgba(1, 106, 112, 1);
   font-weight: 500;
 }
 .Home .section2 .box2 .cont {
@@ -672,12 +671,12 @@ css
   border-radius: 10px;
 }
 
-.Home .ctop{
+.Home .ctop {
   font-size: 2.5vh;
   font-weight: 600;
 }
 /* counter css */
-.Home .counters{
+.Home .counters {
   background-color: rgb(21, 28, 44);
   height: 45vh;
   display: flex;
@@ -688,7 +687,7 @@ css
   position: relative;
 }
 
-.Home .counters .head{
+.Home .counters .head {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -697,7 +696,7 @@ css
   padding-top: 0.5%;
 }
 
-.Home .containers .sub-container{
+.Home .containers .sub-container {
   width: fit-content;
   display: flex;
   flex-direction: column;
@@ -708,7 +707,7 @@ css
   align-items: center;
 }
 
-.Home .counters .condition{
+.Home .counters .condition {
   color: rgba(255, 255, 255, 0.342);
   font-size: x-small;
   position: absolute;
@@ -717,7 +716,7 @@ css
 }
 /* site home navbar css */
 /* navbar */
-.Home .Navbar{
+.Home .Navbar {
   /* position: absolute; */
   top: 1rem;
   height: 60px;
@@ -729,7 +728,7 @@ css
   align-items: center;
 }
 
-.Home nav{
+.Home nav {
   height: 100%;
   width: 85%;
   margin: 0 auto;
@@ -741,16 +740,233 @@ css
   border-radius: 13px;
 }
 
-.Home nav .options{
+.Home nav .options {
   height: 100%;
   display: flex;
   align-items: center;
   gap: 0.9rem;
 }
-.Home nav .options button{
+.Home nav .options button {
   font-size: 15px;
   height: 60%;
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+/* home css new */
+
+.Home .top_1 {
+  background: rgb(0, 0, 0);
+  height: 110vh;
+}
+
+.Home .containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10vw;
+  width: 100%;
+}
+
+.Home .mid_1 {
+  background-color: black;
+  height: 100vh;
+  border: 2px solid white;
+}
+
+.Home .counters {
+  background-color: rgb(21, 28, 44);
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+align-items: center; */
+  gap: 1vw;
+  position: relative;
+}
+
+.Home .counters .head {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: rgb(139, 205, 208);
+  font-size: 6vh;
+  padding-top: 0.5%;
+}
+
+.Home .containers .sub-container {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  color: rgb(149, 149, 149);
+  font-size: larger;
+  justify-content: center;
+  align-items: center;
+}
+
+.Home .counters .condition {
+  color: rgba(255, 255, 255, 0.342);
+  font-size: x-small;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.Home .section2 {
+  margin-top: 2rem;
+  width: 100vw;
+}
+.Home .section2 .box2 {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid black; */
+}
+.Home .section2 .box2 .txt {
+  font-size: 10vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: rgba(1, 106, 112, 1);
+  font-weight: 500;
+}
+.Home .section2 .box2 .cont {
+  display: grid;
+  margin: 0 auto;
+  max-width: 1200px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.Home .section2 .box2 .cont .card {
+  text-align: center;
+  height: 250px;
+  max-width: 300px;
+  box-shadow: 1px 3px 5px 0px #989292;
+  border-radius: 10px;
+}
+
+.Home .ctop {
+  font-size: 2.5vh;
+  font-weight: 600;
+}
+
+/* section 3 */
+
+.Home .section3 {
+  margin-top: 2rem;
+  width: 100vw;
+}
+.Home .section3 .cont {
+  display: flex;
+  gap: 1.5rem;
+  height: 30vh;
+  width: 75%;
+  margin: 0 auto;
+}
+.Home .section3 .cont .img {
+  height: 100%;
+  width: 60%;
+}
+.Home .section3 .cont .search {
+  height: 100%;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Home .section3 .cont .search input {
+  height: 40px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+.Home .section3 .cont .img iframe {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* navbar */
+.Home .Navbar {
+  /* position: absolute; */
+  top: 1rem;
+  height: 60px;
+  width: 100vw;
+  margin-bottom: 1%;
+  padding-top: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Home nav {
+  height: 100%;
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 13px;
+}
+
+.Home nav .options {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.Home nav .options button {
+  font-size: 15px;
+  height: 60%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.gallery {
+  /* padding: 1rem; */
+  display: grid;
+  grid-template-columns: repeat(4, 100vw);
+  grid-template-rows: 1fr;
+  /* grid-column-gap: 1rem; */
+  /* grid-row-gap: 1rem; */
+  overflow: scroll;
+  height: 95vh;
+  scroll-snap-type: both mandatory;
+  scroll-padding: 1rem;
+}
+
+.active {
+  scroll-snap-type: unset;
+}
+
+li {
+  scroll-snap-align: center;
+  display: inline-block;
+  border-radius: 3px;
+  font-size: 0;
+}
+
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery li {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logoo img {
+  height: 5vh;
+}
+.card:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
 }

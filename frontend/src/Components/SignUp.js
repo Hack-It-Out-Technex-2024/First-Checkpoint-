@@ -4,7 +4,9 @@ import {useNavigate }from 'react-router-dom'
 
 const SignUp = () => {
   const [credential, setCredential] = useState({ name:"",email: "", password: "" ,cpassword:""});
+  const [msg, setMsg] = useState("");
 
+  let history = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     fetch("http://localhost:5000/api/auth/createUser");
@@ -20,9 +22,13 @@ const SignUp = () => {
     });
     const json = await response.json();
     console.log(json);
-    if (json.success) {
+    if (json.success){
       //redirect
+      localStorage.setItem("token", json.authtoken);
+      setMsg("Account Created Successfully");
+      history("/main");
     } else {
+      setMsg("invalid credentials");
     }
   };
   const onChange = (e) => {
@@ -91,6 +97,7 @@ const SignUp = () => {
             minLength={5}
             required
           /> </div>
+           <div className="msg" style={{color:'red',textAlign:'center'}}>{msg}</div>
             <button type="submit" className="btn">SIGN UP</button>
         </form>
       </div>

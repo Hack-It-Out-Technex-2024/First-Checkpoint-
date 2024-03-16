@@ -1,7 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import noteContext from "../Context/noteContext";
+import { useNavigate } from "react-router-dom";
 
 const Page1 = () => {
+  const context = useContext(noteContext);
+  // let history = useNavigate();
+  const { Data, setData, addData, getData } = context;
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      // getData();
+    } else {
+      history("/login");
+    }
+  }, []);
+
   const [Plastic, setPlatic] = useState(0);
   const [Rubber, setRubber] = useState(0);
   const [Glass, setGlass] = useState(0);
@@ -9,7 +22,12 @@ const Page1 = () => {
   const [Paper, setPaper] = useState(0);
   const [Mettalic, setMettalic] = useState(0);
 
-  const [mystyle, setMystyle] = useState({ });
+  const handleclick = (e) => {
+    e.preventDefault();
+    addData(Plastic, Glass, 1);
+  };
+
+  const [mystyle, setMystyle] = useState({});
   return (
     <div className="main">
       <div className="Navbar">
@@ -24,8 +42,8 @@ const Page1 = () => {
             <Link className="nav-link" to="/about">
               <button>About</button>
             </Link>
-            <Link className="nav-link" to="/login">
-              <button>Login</button>
+            <Link className="nav-link" to="/">
+              <button>Logout</button>
             </Link>
           </div>
         </nav>
@@ -61,228 +79,149 @@ const Page1 = () => {
             <div className="card">
               <img src="Images/im4.png" alt="plastic" />
               <h4>Plastic Waste</h4>
-              <div>Enter your daily waste in grams</div>
-              <div className="counter">
-                <button
-                  onClick={() => {
-                    setPlatic(Plastic - 1);
-                  }}
-                  disabled={Plastic == 0}
-                >
-                  -
-                </button>
-                <b>{Plastic}g</b>
-                <button
-                  onClick={() => {
-                    setPlatic(Plastic + 1);
-                  }}
-                >
-                  +
-                </button>
-              </div>
-              <div className="impact-txt" style={mystyle}>
-                With your consistent efforts for next 30 days <br /> You will be
-                able to :- <br />
-                <li>
-                  {" "}
-                  Save enough energy to power a <b>60-watt light bulb</b> for 6
-                  hours.
-                </li>
-                <li>
-                  Reduces the demand for <b>petroleum-based plastics</b>..
-                </li>
-              </div>
+              <div>Enter the data</div>
+              <input
+                value={Plastic}
+                onChange={(e) => {
+                  setPlatic(e.target.value);
+                }}
+                type="number"
+                name="counter"
+                id="counter"
+                placeholder="Amount in grams"
+              />
             </div>
             <div className="card">
               <img src="Images/im7.png" alt="mettalic" />
-              <h4>Steel cans</h4>
-              <div>Enter your daily waste in grams</div>
-              <div className="counter">
-                <button
-                  onClick={() => {
-                    setMettalic(Mettalic - 1);
-                  }}
-                  disabled={Mettalic == 0}
-                >
-                  -
-                </button>
-                <b>{Mettalic}g</b>
-                <button
-                  onClick={() => {
-                    setMettalic(Mettalic + 1);
-                  }}
-                >
-                  +
-                </button>
-              </div>
-              <div className="impact-txt" style={mystyle}>
-                With your consistent efforts for next 30 days <br /> You will be
-                able to :- <br />
-                <li>
-                  {" "}
-                  <b>Save energy</b> and raw materials.
-                </li>
-                <li>
-                  save over <b>2,500 pounds of iron</b> ore.
-                </li>
-              </div>
+              <h4>Mettalic waste</h4>
+              <div>Enter the data </div>
+              <input
+                type="number"
+                value={Mettalic}
+                onChange={(e) => {
+                  setPlatic(e.target.value);
+                }}
+                name="counter"
+                id="counter"
+                placeholder="Amount in grams"
+              />
             </div>
             <div className="card">
               <img src="Images/im6.png" alt="glass" />
               <h4>Glass Waste</h4>
-              <div>Enter your daily waste in grams</div>
-              <div className="counter">
-                <button
-                  onClick={() => {
-                    setGlass(Glass - 1);
-                  }}
-                  disabled={Glass == 0}
-                >
-                  -
-                </button>
-                <b>{Glass}g</b>
-                <button
-                  onClick={() => {
-                    setGlass(Glass + 1);
-                  }}
-                >
-                  +
-                </button>
-              </div>
-              <div className="impact-txt" style={mystyle}>
-                With your consistent efforts for next 30 days <br /> You will be
-                able to :- <br />
-                <li>
-                  {" "}
-                  <b>Save energy by melting</b> them at a lower temperature than
-                  making new glass
-                </li>
-                <li>
-                  <b>Reduces landfill</b> waste and the need for raw materials.
-                </li>
-                <li>
-                  save over <b>400 pounds of carbon dioxide</b> emissions.
-                </li>
-              </div>
+              <div>Enter the data </div>
+              <input
+                type="number"
+                value={Glass}
+                onChange={(e) => {
+                  setPlatic(e.target.value);
+                }}
+                name="counter"
+                id="counter"
+                placeholder="Amount in grams"
+              />
             </div>
             <div className="card">
-              <img src="Images/im4.png" alt="rubber" />
-              <h4>Tire recycling</h4>
-              <div>Enter your daily waste in grams</div>
-              <div className="counter">
-                <button
-                  onClick={() => {
-                    setRubber(Rubber - 1);
-                  }}
-                  disabled={Rubber == 0}
-                >
-                  -
-                </button>
-                <b>{Rubber}g</b>
-                <button
-                  onClick={() => {
-                    setRubber(Rubber + 1);
-                  }}
-                >
-                  +
-                </button>
-              </div>
-              <div className="impact-txt" style={mystyle}>
-                With your consistent efforts for next 30 days <br /> You will be
-                able to :- <br />
-                <li>
-                  {" "}
-                  <b>Save landfill</b> space.
-                </li>
-                <li>
-                  Repurposes rubber for <b>playground surfaces, asphalt</b>, and
-                  more.
-                </li>
-              </div>
-            </div>
-            <div className="card">
-              <img src="Images/im4.png" alt="paper" />
+              <img src="Images/paper_waste.png" alt="paper" />
               <h4>Paper Waste</h4>
-              <div>Enter your daily waste in grams</div>
-              <div className="counter">
-                <button
-                  onClick={() => {
-                    setPaper(Paper - 1);
-                  }}
-                  disabled={Paper == 0}
-                >
-                  -
-                </button>
-                <b>{Paper}g</b>
-                <button
-                  onClick={() => {
-                    setPaper(Paper + 1);
-                  }}
-                >
-                  +
-                </button>
-              </div>
-              <div className="impact-txt" style={mystyle}>
-                With your consistent efforts for next 30 days <br /> You will be
-                able to :- <br />
-                <li>
-                  {" "}
-                  Save <b>17 trees</b> from being cut down 🌳
-                </li>
-                <li>
-                  Save <b>7000 gallons</b> of Water 💧
-                </li>
-                <li>
-                  Save <b>4,100 kilowatt-hours</b> of energy ⚡
-                </li>
-              </div>
+              <div>Enter the data </div>
+              <input
+                type="number"
+                value={Paper}
+                onChange={(e) => {
+                  setPlatic(e.target.value);
+                }}
+                name="counter"
+                id="counter"
+                placeholder="Amount in grams"
+              />
             </div>
             <div className="card">
-              <img src="Images/im4.png" alt="E-waste" />
+              <img src="Images/battery.png" alt="E-waste" />
               <h4>E-Waste</h4>
-              <div>Enter your daily waste in grams</div>
-              <div className="counter">
-                <button
-                  onClick={() => {
-                    setEwaste(Ewaste - 1);
-                  }}
-                  disabled={Ewaste == 0}
-                >
-                  -
-                </button>
-                <b>{Ewaste}g</b>
-                <button
-                  onClick={() => {
-                    setEwaste(Ewaste + 1);
-                  }}
-                >
-                  +
-                </button>
-              </div>
-              <div className="impact-txt" style={mystyle}>
-                With your consistent efforts for next 30 days <br /> You will be
-                able to :- <br />
-                <li>
-                  {" "}
-                  <b>Prevents toxic materials</b> like lead and mercury ,from
-                  leaching into the soil.
-                </li>
-                <li>
-                  <b>Save energy</b> used in manufacturing new electronics.
-                </li>
-              </div>
+              <div>Enter the data </div>
+              <input
+                type="number"
+                value={Ewaste}
+                onChange={(e) => {
+                  setPlatic(e.target.value);
+                }}
+                name="counter"
+                id="counter"
+                placeholder="Amount in grams"
+              />
             </div>
           </div>
           <button
             id="submit-btn"
             onClick={() => {
-              setMystyle({     opacity:'1',
-                  animation: 'typing 5s steps(40, end), blink-caret 0.75s step-end infinite',
-              })
+              setMystyle({
+                opacity: "1",
+                animation:
+                  "typing 5s steps(40, end), blink-caret 0.75s step-end infinite",
+                height: "400px",
+              });
+              handleclick;
             }}
           >
             See Impact
           </button>
+          <div className="feedback">
+            <h3>Impact you have created</h3>
+            <div className="impact-txt" style={mystyle}>
+              With your consistent efforts days <br /> You will be able to :-{" "}
+              <br />
+              <li>
+                {" "}
+                <b>Save energy by melting</b> them at a lower temperature than
+                making new glass
+              </li>
+              <li>
+                <b>Reduces landfill</b> waste and the need for raw materials.
+              </li>
+              <li>
+                save over <b>400 pounds of carbon dioxide</b> emissions.
+              </li>
+              <li>
+                {" "}
+                <b>Save energy</b> and raw materials.
+              </li>
+              <li>
+                save over <b>2,500 pounds of iron</b> ore.
+              </li>
+              <li>
+                Save enough energy to power a <b>60-watt light bulb</b> for 6
+                hours.
+              </li>
+              <li>
+                Reduces the demand for <b>petroleum-based plastics</b>..
+              </li>
+              <li>
+                {" "}
+                <b>Prevents toxic materials</b> like lead and mercury ,from
+                leaching into the soil.
+              </li>
+              <li>
+                <b>Save energy</b> used in manufacturing new electronics.
+              </li>
+              <li>
+                {" "}
+                Save <b>17 trees</b> from being cut down 🌳
+              </li>
+              <li>
+                Save <b>7000 gallons</b> of Water 💧
+              </li>
+              <li>
+                Save <b>4,100 kilowatt-hours</b> of energy ⚡
+              </li>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="section3">
+        <div className="user_record">
+          <div className="txt"></div>
+          <div className="bar_sectn"></div>
         </div>
       </section>
       <div className="footer">

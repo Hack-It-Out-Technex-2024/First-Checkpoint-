@@ -17,9 +17,9 @@ const about = () => {
               <Link className="nav-link" to="/about">
                 <button>About</button>
               </Link>
-              <Link className="nav-link" to="/login">
-                <button>Login</button>
-              </Link>
+              <Link className="nav-link" to="/">
+              <button>Logout</button>
+            </Link>
             </div>
           </nav>
         </div>
@@ -28,19 +28,13 @@ const about = () => {
             <img src="Images/About1.png" alt="about" />
           </div>
           <div className="text">
-            <h3>About me</h3>
             {/* <br /> */}
             <h1>Innovation Dedication</h1>
             {/* <br/> */}
             <h1>and Sustainable Solution</h1>
             {/* <br /> */}
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-              mollitia aliquid saepe eum, sunt autem vero. Quod, expedita! Aut
-              quae deserunt eos architecto aliquid. Quod beatae at corporis quam
-              distinctio soluta sunt nostrum eligendi ad molestias laborum
-              veniam architecto, recusandae accusamus voluptatem nobis repellat
-              officia!
+            In the realm of waste management, innovation, dedication, and sustainable solutions play pivotal roles in addressing the global challenge of waste accumulation. Innovation drives the development of advanced technologies such as waste-to-energy systems, recycling innovations, and smart waste management solutions that optimize resource utilization and minimize environmental impact. 
             </p>
           </div>
         </div>
