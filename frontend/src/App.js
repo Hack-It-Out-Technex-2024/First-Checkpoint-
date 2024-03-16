@@ -1,4 +1,4 @@
-import Page1 from "./Components/Page1";
+import Page1 from "./Components/page1";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
