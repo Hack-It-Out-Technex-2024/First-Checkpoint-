@@ -1,41 +1,56 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import noteContext from "../Context/noteContext";
+import CircularProgressBar from "./CircularProgressBar";
 import { useNavigate } from "react-router-dom";
 
 const Page1 = () => {
-  const host = "http://localhost:5000";
-  let history =useNavigate();
-  
-  const addData = async (plastic, glass,Ewaste,paper,mettalic, days) => {
-    //TODO API CALL
-    const response = await fetch(`${host}/api/data/adddata`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({ plastic, glass,Ewaste,paper,mettalic, days}),
-    });
-    //logic to edit in client site
-    const note = await response.json();
-  };
+  // const host = "http://localhost:5000";
+  // let history = useNavigate();
+  const Datatinitial = [];
+  const [Data, setData] = useState(Datatinitial);
+  const stamnt = [
+    ". Start Small: Begin by recycling common household items like paper, plastic bottles, and aluminum cans.",
+    ". Know Your Local Recycling Guidelines: Familiarize yourself with what materials are accepted for recycling in your area.",
+    ". Use Recycling Bins: Place recycling bins in convenient locations throughout your home to encourage recycling.",
+    ". Reduce Junk Mail: Opt out of receiving unwanted mail to reduce paper waste.",
+    ". Reuse Containers: Reuse glass jars, plastic containers, and other packaging instead of throwing them away.",
+    ". Compost Organic Waste: Start a compost pile for food scraps and yard waste to reduce landfill waste.",
+    ". Choose Recyclable Packaging: Look for products with minimal packaging or packaging that is recyclable.",
+    ". Support Recycling Programs: Participate in community recycling programs and events.",
+    ". Educate Others: Spread awareness about recycling and encourage friends and family to participate.",
+    ". Recycle Electronics: Dispose of old electronics responsibly through e-waste recycling programs.",
+    ". Upcycle Materials: Get creative and repurpose items for new uses instead of discarding them.",
+    ". Reduce Food Waste: Plan meals carefully to minimize food waste and compost any unavoidable scraps.",
+    ". Recycle Batteries: Properly dispose of batteries through designated recycling centers to prevent environmental damage.",
+    ". Donate Unused Items: Donate clothing, furniture, and other household items to charity instead of throwing them away.",
+    ". Avoid Single-Use Plastics: Use reusable water bottles, shopping bags, and utensils to reduce plastic waste.",
+    ". Recycle Paper Properly: Remove any contaminants (like staples or tape) from paper before recycling.",
+    ". Support Sustainable Brands: Choose products from companies committed to sustainable practices and packaging.",
+    ". Participate in Clothing Swaps: Organize or participate in clothing swap events to give new life to unwanted clothing.",
+    ". Dispose of Hazardous Waste Responsibly: Dispose of hazardous household items like paint, chemicals, and light bulbs at designated facilities.",
+    ". Recycle Metal Scraps: Collect and recycle metal scraps from household projects or repairs.",
+  ];
+  const [count, setCount] = useState(0);
 
-  const [Plastic, setPlatic] = useState("Amount in grams");
-  const [Glass, setGlass] = useState("Amount in grams");
-  const [Ewaste, setEwaste] = useState("Amount in grams");
-  const [Paper, setPaper] = useState("Amount in grams");
-  const [Mettalic, setMettalic] = useState("Amount in grams");
-
-  const handleclick = (e) => {
-    addData(Plastic, Glass,Ewaste,Paper,Mettalic, 1);
-    setEwaste("Amount in grams")
-    setGlass("Amount in grams")
-    setMettalic("Amount in grams")
-    setPaper("Amount in grams")
-    setPlatic("Amount in grams")
-  };
-  
+  const [Plastic, setPlatic] = useState(0);
+  const [Glass, setGlass] = useState(0);
+  const [Ewaste, setEwaste] = useState(0);
+  const [Paper, setPaper] = useState(0);
+  const [Mettalic, setMettalic] = useState(0);
+  var Water_Saved;
+  var CO2;
+  var Energy_Saved;
+  Water_Saved =
+    Paper * 0.026 + Mettalic * 16 + Plastic * 0.025 + Glass * 0.00015;
+  CO2 = Paper * 1.2 + Mettalic * 10 + Plastic * 3 + Glass * 0.5 + Ewaste * 1;
+  Energy_Saved =
+    Paper * 0.045 +
+    Mettalic * 0.01 +
+    Plastic * 0.0075 +
+    Glass * 0.0002 +
+    Ewaste * 0.04;
+  const handleclick = (e) => {};
   const [mystyle, setMystyle] = useState({});
   return (
     <div className="main">
@@ -72,7 +87,9 @@ const Page1 = () => {
               planet. By using this app, you contribute to a cleaner, greener
               future
             </p>
-            <button>Veiw Details</button>
+            <Link className="nav-link" to="/info">
+              <button>Veiw Details</button>
+            </Link>
           </div>
           <div className="img">
             <img src="Images/hero.png" alt="hero" />
@@ -173,69 +190,65 @@ const Page1 = () => {
                   "typing 5s steps(40, end), blink-caret 0.75s step-end infinite",
                 height: "400px",
               });
-              handleclick();
+              count == stamnt.length ? setCount(0) : setCount(count + 2);
             }}
           >
             See Impact
           </button>
-          <div className="feedback">
-            <h3>Impact you have created</h3>
+          <div className="feedback2">
+            <h3>Tips of the Day:-</h3>
+
             <div className="impact-txt" style={mystyle}>
-              With your consistent efforts days <br /> You will be able to :-{" "}
-              <br />
-              <li>
-                {" "}
-                <b>Save energy by melting</b> them at a lower temperature than
-                making new glass
-              </li>
-              <li>
-                <b>Reduces landfill</b> waste and the need for raw materials.
-              </li>
-              <li>
-                save over <b>400 pounds of carbon dioxide</b> emissions.
-              </li>
-              <li>
-                {" "}
-                <b>Save energy</b> and raw materials.
-              </li>
-              <li>
-                save over <b>2,500 pounds of iron</b> ore.
-              </li>
-              <li>
-                Save enough energy to power a <b>60-watt light bulb</b> for 6
-                hours.
-              </li>
-              <li>
-                Reduces the demand for <b>petroleum-based plastics</b>..
-              </li>
-              <li>
-                {" "}
-                <b>Prevents toxic materials</b> like lead and mercury ,from
-                leaching into the soil.
-              </li>
-              <li>
-                <b>Save energy</b> used in manufacturing new electronics.
-              </li>
-              <li>
-                {" "}
-                Save <b>17 trees</b> from being cut down 🌳
-              </li>
-              <li>
-                Save <b>7000 gallons</b> of Water 💧
-              </li>
-              <li>
-                Save <b>4,100 kilowatt-hours</b> of energy ⚡
-              </li>
+              1: {stamnt[count]} <br />
+              2: {stamnt[count + 1]} <br />
+              3: {stamnt[count + 2]}
             </div>
           </div>
         </div>
       </section>
-      <section className="section3">
-        <div className="user_record">
-          <div className="txt"></div>
-          <div className="bar_sectn"></div>
+      <div className="feedback">
+        <div className="heading">Sustainabilty Metrics</div>
+
+        <div className="achievement">
+          <div className="figure">
+            <CircularProgressBar data={CO2} target={11000} />
+          </div>
+          <div className="text">
+            Congratulations on your environmental efforts! You set out to reduce
+            CO2 emissions by 11000 g, and your dedication has led to a reduction
+            of {CO2} g. Your commitment to sustainability is making a tangible
+            impact on our planet's health. Let's continue striving for even
+            greater achievements together.
+          </div>
         </div>
-      </section>
+        <div className="achievement">
+          <div className="text">
+            Celebrate your fluid commitment to sustainability! With a goal to
+            save water by 173 liters, you've successfully conserved
+            {Water_Saved} liters. Your dedication flows, not only making a
+            difference but also inspiring greater environmental consciousness.
+            Let's persist in our efforts, fluidly striving for continued
+            progress and positive impact across various fronts.
+          </div>
+
+          <div className="figure">
+            <CircularProgressBar data={Water_Saved} target={173} />
+          </div>
+        </div>
+        <div className="achievement">
+          <div className="figure">
+            <CircularProgressBar data={Energy_Saved} target={10} />
+          </div>
+          <div className="text">
+            Empower your dedication to sustainability! With a goal to save
+            energy by 10 kWh, you've successfully achieved a reduction of{" "}
+            {Energy_Saved} kWh. Your commitment fuels progress, not only
+            energizing change but also illuminating greater environmental
+            consciousness. Let's persist in our efforts, empowering ongoing
+            advancements and positive impact across various fronts.
+          </div>
+        </div>
+      </div>
       <div className="footer">
         <div className="content">
           <div className="left">

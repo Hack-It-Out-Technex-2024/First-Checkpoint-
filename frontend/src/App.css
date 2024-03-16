@@ -158,14 +158,26 @@ nav .options button:hover {
   cursor: pointer;
   align-self: flex-end;
 }
-.section2 .box2 .impact-txt {
-  height: 0px;
+.section2 .box2 .feedback2 {
+  height: 150px;
+  width: 90vw;
+  background-color: rgb(175, 166, 166);
+  border: 2px solid grey;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+.section2 .box2 .feedback2 .impact-txt {
+  height: 100%;
   color: black;
   width: 90%;
-  opacity: 0;
+  /* opacity: 0; */
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   white-space: pre-line; /* Keeps the content on a single line */
 }
+
 @keyframes typing {
   from {
     width: 0;
@@ -716,6 +728,39 @@ css
   bottom: 0;
   right: 0;
 }
+.Home .cards .cont3 {
+  height: 70vh;
+  width: 70vw;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+}
+.Home .cards .card4 {
+  border-radius: 1rem;
+  height: 100%;
+  width: 500px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 1px 3px 5px 0px #989292;
+}
+.Home .cards .card4 p {
+  height: 40%;
+  width: 90%;
+  padding: 0 10px;
+}
+.Home .cards .card4 .img {
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.Home .cards .card4 .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
 /* site home navbar css */
 /* navbar */
 .Home .Navbar {
@@ -972,7 +1017,10 @@ li {
   transform: scale(1.1);
   transition: transform 0.5s ease;
 }
-
+.card4:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
+}
 /* information page  */
 .Information .top {
   height: 80vh;
@@ -1094,4 +1142,44 @@ li {
   color: rgb(0, 32, 34);
   font-size: small;
   font-weight: 600;
+}
+
+/* feedback */
+.feedback {
+  /* height: 100vh; */
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  gap: 2vh;
+  border: 1px solid black;
+  background-color: rgb(1, 106, 112);
+}
+
+.feedback .achievement {
+  /* border: 1px solid white; */
+  display: flex;
+  height: fit-content;
+  color: rgb(163, 163, 163);
+  justify-content: space-between;
+}
+
+.feedback .achievement .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  font-size: x-large;
+  font-style: italic;
+  /* align-items: center; */
+}
+
+.feedback .heading {
+  margin: auto;
+  font-size: 8vh;
+  color: #fff;
+  font-weight: 500;
 }

@@ -83,20 +83,6 @@ const SignUp = () => {
             minLength={5}
             required
           /> </div>
-            <div className="confirmpasswordpart">
-                <label htmlFor="cpassword" className="form-label">
-           Confirm Password
-          </label>
-          <input
-            type="password"
-            className="confirm_password"
-            onChange={onChange}
-            value={credential.password}
-            id="cpassword"
-            name="cpassword"
-            minLength={5}
-            required
-          /> </div>
            <div className="msg" style={{color:'red',textAlign:'center'}}>{msg}</div>
             <button type="submit" className="btn">SIGN UP</button>
         </form>
