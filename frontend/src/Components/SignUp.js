@@ -9,6 +9,7 @@ const SignUp = () => {
   let history = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+      history("/main");
     fetch("http://localhost:5000/api/auth/createUser");
     const {name,email,password}=credential;
     const response = await fetch(`http://localhost:5000/api/auth/createUser`, {
@@ -26,7 +27,6 @@ const SignUp = () => {
       //redirect
       localStorage.setItem("token", json.authtoken);
       setMsg("Account Created Successfully");
-      history("/main");
     } else {
       setMsg("invalid credentials");
     }
